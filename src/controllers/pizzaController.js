@@ -19,6 +19,23 @@ class PizzaController {
         res.json(pizzas);
     }
 
+     // buscar por id
+      async buscarPorId(req, res) {
+        try {
+          const pizza = await Pizza.findById(req.params.id)
+            .populate('pizzas');
+    
+          if (!pizza) {
+            return res.status(404).json({ erro: 'Pizza não encontrada' });
+          }
+    
+          res.json(pedido);
+    
+        } catch (e) {
+          res.status(500).json({ erro: 'Erro ao buscar pizza' });
+        }
+      }
+
     async atualizar(req, res) {
         try {
             const preco = await pizzaService.calcularPreco(req.body);
