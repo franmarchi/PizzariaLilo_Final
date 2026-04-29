@@ -8,4 +8,13 @@ app.use(express.json());
 connectDB();
 app.use('/api', routes);
 
+const internalError = require('./middlewares/internalError');
+
+app.use('/api', routes);
+
+// sempre por último
+app.use(internalError);
+
 module.exports = app;
+
+
