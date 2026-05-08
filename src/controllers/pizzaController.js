@@ -23,7 +23,7 @@ class PizzaController {
       async buscarPorId(req, res) {
         try {
           const pizza = await Pizza.findById(req.params.id)
-            .populate('pizzas');
+            .populate('pizzas.pizza');
     
           if (!pizza) {
             return res.status(404).json({ erro: 'Pizza não encontrada' });

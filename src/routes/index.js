@@ -38,7 +38,7 @@ router.post(
   '/pizzas',
   auth,
   validateBody(['sabores', 'tamanho']),
-  pizzaController.criar
+  pizza.criar
 );
 
 router.get('/pizzas', pizza.listar);
